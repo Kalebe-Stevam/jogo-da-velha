@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-image: linear-gradient(to left, #537895, #09203f);
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  
+  .board {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    display: grid;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(3, auto);
+  }
+  
+  .board.o .cell:not(.x):not(.o):hover::before,
+  .board.o .cell:not(.x):not(.o):hover::after,
+  .board.x .cell:not(.x):not(.o):hover::before,
+  .board.x .cell:not(.x):not(.o):hover::after {
+    background-color: rgba(255, 255, 255, 0.2) !important; 
+  }
+  
+  /* CELULA */
+  
+  .cell {
+    height: 100px;
+    width: 100px;
+    border: 1px solid aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cell:nth-child(1),
+  .cell:nth-child(2),
+  .cell:nth-child(3) {
+    border-top: none;
+  }
+  
+  .cell:nth-child(3),
+  .cell:nth-child(6),
+  .cell:nth-child(9) {
+    border-right: none;
+  }
+  
+  .cell:nth-child(7),
+  .cell:nth-child(8),
+  .cell:nth-child(9) {
+    border-bottom: none;
+  }
+  .cell:nth-child(1),
+  .cell:nth-child(4),
+  .cell:nth-child(7) {
+    border-left: none;
+  }
+  
+  /* CIRCULO E X */
+  
+  .cell.o,
+  .cell.x {
+      cursor: not-allowed;
+  }
+  
+  
+  /* X */
+  
+  .cell.x::before,
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.o):hover::before,
+  .board.x .cell:not(.x):not(.o):hover::after {  
+    content: "";
+    background-color: rgb(255, 255, 255);
+    height: calc(100px * 0.1);
+    width: calc(100px * 0.9);
+    position: absolute;
+  }
+  
+  .cell.x::before,
+  .board.x .cell:not(.x):not(.o):hover::before {
+    transform: rotate(-45deg);
+  }
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.o):hover::after {
+    transform: rotate(45deg);
+  }
+  
+  /* O */
+  
+  .cell.o::before,
+  .cell.o::after,
+  .board.o .cell:not(.x):not(.o):hover::after, 
+  .board.o .cell:not(.x):not(.o):hover::before {
+    content: "";
+    background-color: rgb(255, 255, 255);
+    height: calc(100px * 0.9);
+    width: calc(100px * 0.9);
+    border-radius: 70%;
+    position: absolute;
+  }
+  
+  /* MENSAGEM DE VITORIA*/
+  .mensagem-vencedor {
+    display: none;
+    position: fixed;
+    top: 0; 
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #0000009a;
+  }
+  
+  .mensagem-vencedor button {
+    border: none;
+    background-color: rgb(29, 170, 65);
+    font-size: 27px;
+    color: azure;
+    padding: 26px 75px;
+    border-radius: 10px;
+  }
+  
+  .mensagem-vencedor button:hover {
+    background-color: aliceblue;
+    color: green;
+  }
+  
+  .mensagem-vencedor p {
+    color: aliceblue;
+    font-size: 100px;
+  }
+  
+  .show-winnig-message {
+    display: flex;
+  }
